@@ -3,8 +3,10 @@ import { removeCar } from "../store";
 
 export default function CarList() {
   const dispatch = useDispatch();
-  const { data, searchTerm } = useSelector((state) => {
-    return state.cars;
+  const data = useSelector(({ cars: { data, searchTerm } }) => {
+    return data.filter((car) =>
+      car.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   });
 
   const { name } = useSelector((state) => state.carForm);
@@ -14,29 +16,26 @@ export default function CarList() {
   };
 
   const renderedCarsList = data.map((car) => {
-    if (car.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return (
-        <div key={car.id} className="panel">
-          {car.name.toLowerCase().startsWith(name.toLowerCase()) &&
-          name !== "" ? (
-            <p className="bold">
-              {car.name} - ${car.cost}
-            </p>
-          ) : (
-            <p>
-              {car.name} - ${car.cost}
-            </p>
-          )}
-          <button
-            onClick={() => handleCarDelete(car)}
-            className="button is-danger"
-          >
-            Delete
-          </button>
-        </div>
-      );
-    }
-    return null;
+    return (
+      <div key={car.id} className="panel">
+        {car.name.toLowerCase().startsWith(name.toLowerCase()) &&
+        name !== "" ? (
+          <p className="bold">
+            {car.name} - ${car.cost}
+          </p>
+        ) : (
+          <p>
+            {car.name} - ${car.cost}
+          </p>
+        )}
+        <button
+          onClick={() => handleCarDelete(car)}
+          className="button is-danger"
+        >
+          Delete
+        </button>
+      </div>
+    );
   });
 
   return (
