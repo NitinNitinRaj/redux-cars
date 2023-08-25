@@ -1,7 +1,9 @@
+import CarPage from "./pages/CarPage";
+
 export default function App() {
   return (
-    <div>
-      <h1>Hi</h1>
+    <div className="container">
+      <CarPage />
     </div>
   );
 }
