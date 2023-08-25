@@ -1,3 +1,5 @@
+import "bulma/css/bulma.css";
+import "./styles.css";
 import React from "react";
 import App from "./App";
 import { Provider } from "react-redux";
