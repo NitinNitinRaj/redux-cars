@@ -7,17 +7,27 @@ export default function CarList() {
     return state.cars;
   });
 
+  const { name } = useSelector((state) => state.carForm);
+
   const handleCarDelete = (car) => {
     dispatch(removeCar(car));
   };
 
   const renderedCarsList = data.map((car) => {
     if (car.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+      console.log(name);
       return (
         <div key={car.id} className="panel">
-          <p className="">
-            {car.name} - ${car.cost}
-          </p>
+          {car.name.toLowerCase().startsWith(name.toLowerCase()) &&
+          name !== "" ? (
+            <p className="bold">
+              {car.name} - ${car.cost}
+            </p>
+          ) : (
+            <p>
+              {car.name} - ${car.cost}
+            </p>
+          )}
           <button
             onClick={() => handleCarDelete(car)}
             className="button is-danger"

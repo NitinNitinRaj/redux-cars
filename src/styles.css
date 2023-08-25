@@ -28,11 +28,11 @@
 }
 
 .car-list {
-  max-height: 400px;
+  max-height: 430px;
   overflow-y: auto;
 }
 
-.car-list .panel.bold {
+.car-list .panel .bold {
   font-weight: 600;
 }
 
