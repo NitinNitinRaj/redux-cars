@@ -15,7 +15,6 @@ export default function CarList() {
 
   const renderedCarsList = data.map((car) => {
     if (car.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-      console.log(name);
       return (
         <div key={car.id} className="panel">
           {car.name.toLowerCase().startsWith(name.toLowerCase()) &&

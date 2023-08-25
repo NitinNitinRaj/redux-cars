@@ -10,11 +10,11 @@ export default function CarSearch() {
   };
   return (
     <div className="list-header">
-      <h3 className="title">Cars</h3>
-      <div className="search">
+      <h3 className="title is-3">My Cars</h3>
+      <div className="search field is-horizontal">
         <label className="label">Search</label>
         <input
-          className="input is-expanded"
+          className="input"
           type="text"
           value={searchTerm}
           onChange={handleSearchTermChange}
